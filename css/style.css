@@ -2,7 +2,7 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #ffffff;
 }
-a{
+a {
   text-decoration: none;
 }
 ul {
@@ -187,10 +187,14 @@ h6 {
 }
 .hero-btn:hover,
 .header-btn:focus,
-.header-btn.current {
+.header-btn:active,
+.contacts-form-send-btn:hover,
+.contacts-form-send-btn:focus,
+.contacts-form-send-btn:active {
   background: #404bbf;
 }
-.hero-btn {
+.hero-btn,
+.contacts-form-send-btn {
   padding: 16px 32px;
   display: block;
   margin: 0 auto;
@@ -336,8 +340,6 @@ h6 {
   padding-top: 130px;
   padding-bottom: 120px;
 }
-.conteiner {
-}
 .customer-title {
   margin-bottom: 72px;
   font-weight: 700;
@@ -426,9 +428,9 @@ h6 {
   display: flex;
   gap: 16px;
 }
-.list {
-}
-.foter-soc-text {
+
+.foter-soc-text,
+.call-to-action {
   margin-bottom: 16px;
   font-family: "Roboto";
   font-weight: 500;
@@ -459,9 +461,6 @@ h6 {
 }
 .foter-soc-icon {
   fill: #f4f4fd;
-}
-
-.link {
 }
 .job-btn:hover,
 .job-btn:focus,
@@ -567,10 +566,7 @@ h6 {
 .portfolio-item:hover .portfolio-hid {
   transform: translateX(0);
 }
-.portfolio-item:hover,
-.portfolio-item:focus {
 
-}
 .portfolio-box {
   position: relative;
   overflow: hidden;
@@ -585,8 +581,6 @@ h6 {
   background: #4d5ae5;
   transform: translateY(100%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.portfolio-pictures {
 }
 .portfolio-hid > p {
   font-weight: 400;
@@ -628,19 +622,72 @@ h6 {
   line-height: 1.17;
   color: #4d5ae5;
 }
-.backdrop {
+
+
+
+.subscribe-form-elements-container {
+  display: flex;
+}
+.subscribe-form [type='email'] {
+  min-width: 264px;
+  margin-right: 24px;
+  padding: 7px 16px;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+  border-radius: 4px;
+}
+
+.subscribe-form [type='email']::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.subscribe-btn {
+  padding: 8px 24px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  background-color: #4d5ae5;
+  border: 0;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.subscribe-btn:hover {
+  background-color: #404bbf;
+}
+.subscribe-btn:after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24 2L0 13.25L7.66994 15.6172L19.5 6.375L10.5017 16.4913L10.509 16.4936L10.5 16.4913V22L14.8013 17.8183L20.2501 19.5L24 2Z' fill='white'/%3E%3C/svg%3E");
+}
+
+
+
+.overlay {
   position: fixed;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   left: 0;
   top: 0;
   background-color: rgba(46, 47, 66, 0.4);
-  
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 1;
-  transition: opacity 250ms;
 }
 .is-hidden {
-  
+  visibility: hidden;
   opacity: 0;
   pointer-events: none;
 }
@@ -650,15 +697,20 @@ h6 {
 .modal {
   position: absolute;
   width: 408px;
-  height: 576px;
+  padding: 72px 24px 24px 24px;
+  min-height: 86px;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 1;
-  background: #fcfcfc;
-  box-shadow: 0px 1px 1px rgb(0 0 0 / 14%), 0px 1px 3px rgb(0 0 0 / 12%),
-    0px 2px 1px rgb(0 0 0 / 20%);
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0.04em;
+  color: #8e8f99;
+  background-color:  #fcfcfc;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
+   0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+  transform: translate(-50%, -50%) scale(100%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1) 50ms;
 }
 .btn-close {
@@ -680,13 +732,112 @@ h6 {
   border-radius: 50%;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     background-image 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    
-}
-.btn-close-icon {
-  
 }
 .btn-close:hover,
 .btn-close:focus {
   background: #404bbf;
   fill: #ffffff;
 }
+
+.contacts-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.contacts-form b {
+  margin-bottom: 14px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  color: #2e2f42;
+  text-align: center;
+}
+
+.contacts-form .input-field {
+  margin-bottom: 8px;
+}
+.contacts-form label:not(.accept-checkbox-field) {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.contacts-form input:not([type="checkbox"]),
+.contacts-form textarea {
+  width: 100%;
+  padding: 11px 16px 11px 37px;
+  color: #2e2f42;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1)                  ;
+}
+
+.contacts-form textarea {
+  min-height: 120px;
+  margin-bottom: 16px;
+  padding: 8px 16px;
+  resize: none;
+}
+
+.contacts-form textarea::placeholder {
+  color: rgba(117, 117, 117, 0.5);
+}
+
+.contacts-form input:hover,
+.contacts-form input:focus,
+.contacts-form textarea:hover,
+.contacts-form textarea:focus {
+  outline: none;
+  border-color: #4d5ae5;
+}
+.contacts-form input:not(.privacy-policy-checkbox):hover + svg,
+.contacts-form input:not(.privacy-policy-checkbox):focus + svg {
+  fill: #4d5ae5;
+}
+.contacts-form .input-wrapper {
+  position: relative;
+}
+
+.input-field svg {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translate(0, -50%);
+  fill: #2e2f42;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.accept-checkbox-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  color: #757575;
+}
+.accept-checkbox-field svg {
+  margin-right: 8px;
+  border: 1.25px solid #2e2f42;
+  border-radius: 2px;
+  fill:transparent;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.privacy-policy-checkbox:checked + svg {
+  border-color: #404bbf;
+  fill: #404bbf;
+}
+.privacy-policy {
+  color: #4d5ae5;
+  text-decoration: underline;
+}
+.contacts-form-button-field {
+  text-align: center;
+}
+.contacts-form-send-btn {
+  min-width: 169px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+
