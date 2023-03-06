@@ -781,7 +781,8 @@ h6 {
 .contacts-form textarea::placeholder {
   color: rgba(117, 117, 117, 0.5);
 }
-
+.subscribe-form input:focus,
+.subscribe-form input:hover,
 .contacts-form input:hover,
 .contacts-form input:focus,
 .contacts-form textarea:hover,
@@ -823,8 +824,10 @@ h6 {
 }
 .privacy-policy-checkbox:checked + svg {
   border-color: #404bbf;
-  fill: #404bbf;
+  fill: #404bbf; 
+  
 }
+
 .privacy-policy {
   color: #4d5ae5;
   text-decoration: underline;
